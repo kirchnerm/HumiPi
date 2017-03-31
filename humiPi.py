@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import os
 import thingspeak
 import time
@@ -53,9 +54,9 @@ def measure():
  
 if __name__ == "__main__":
     channel = thingspeak.Channel(id=channel_id, write_key=write_key, api_key=read_key)
-    while True:
-        humidity, temperature = measure()
-        print('temperature: {:2.2f}   humidity: {:2.2f} %'.format(temperature, humidity)); 
-        putOnCouch(temperature,humidity)
-        putOnThingspeak(channel,temperature,humidity)
-        time.sleep(60)
+
+    humidity, temperature = measure()
+    print('temperature: {:2.2f}   humidity: {:2.2f} %'.format(temperature, humidity)); 
+
+    putOnCouch(temperature,humidity)
+    putOnThingspeak(channel,temperature,humidity)
