@@ -24,11 +24,14 @@ sensor = Adafruit_DHT.DHT22
 
 def putOnCouch(temperature, humidity):
     try:
-        timeString = json.dumps(datetime.datetime.now().isoformat())
+        timeString = datetime.datetime.now().isoformat()
         doc = { 'datetime': timeString,
-                't': temperature, 
-                'h': humidity
+                't': "{:5.2f}".format(temperature), 
+                'h': "{:5.2f}".format(humidity),
+                'v': "0.9"
                }
+               
+        print(doc)
         
         db.save(doc) 
         
